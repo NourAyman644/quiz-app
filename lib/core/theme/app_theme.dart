@@ -7,7 +7,7 @@ ThemeData getTheme() {
   return ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),

@@ -15,18 +15,10 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   initState() {
     super.initState();
-    navigateAfterTenSec();
+    navigateAfter(seconds: 8, context: context, routeName: Routes.login);
   }
 
   @override
-  void navigateAfterTenSec() {
-    Future.delayed(
-      const Duration(seconds: 10),
-    ).then((value) {
-      Navigate(context: context, routeName: Routes.login);
-    });
-  }
-
   Widget build(BuildContext context) {
     // double screenHeight = MediaQuery.of(context).size.height;
     // double screenwidth = MediaQuery.of(context).size.width;
