@@ -15,11 +15,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   initState() {
     super.initState();
-    navigateAfterThreeSec();
+    navigateAfterTenSec();
   }
 
   @override
-  void navigateAfterThreeSec() {
+  void navigateAfterTenSec() {
     Future.delayed(
       const Duration(seconds: 10),
     ).then((value) {
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Lottie.asset(
-          AppAssets.logo,
+          AppAssets.splash,
           fit: BoxFit.fill,
           // width: double.infinity,
           height: double.infinity,
