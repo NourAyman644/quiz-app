@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
                   width: 300,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               AnimatedTextKit(

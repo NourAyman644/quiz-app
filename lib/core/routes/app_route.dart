@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/features/Quiz/quiz_screen.dart';
+import 'package:quiz_app/features/data/view/quiz_screen.dart';
 import 'package:quiz_app/features/auth/presentation/screens/ready_screen.dart';
 import 'package:quiz_app/features/auth/presentation/screens/splash_screen.dart';
 

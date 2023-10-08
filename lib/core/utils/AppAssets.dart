@@ -6,4 +6,6 @@ class AppAssets {
   static const String logo = '${baseUrl}man.json';
   static const String galaxy = '${baseUrl}galaxy.json';
   static const String man = '${baseUrl}man.json';
+  static const String question = '${baseUrl}kkk.json';
+  static const String qa = '${baseUrl}b.json';
 }
