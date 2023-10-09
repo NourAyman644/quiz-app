@@ -8,4 +8,5 @@ class AppAssets {
   static const String man = '${baseUrl}man.json';
   static const String question = '${baseUrl}kkk.json';
   static const String qa = '${baseUrl}b.json';
+  static const String done = '${baseUrl}dn.json';
 }

@@ -3,78 +3,62 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../features/data/Controller/quiz_controller.dart';
 import '../utils/AppColors.dart';
 import 'custom_elvated_btn.dart';
 
 class QuestionCard extends StatelessWidget {
-  const QuestionCard({
+  QuestionCard({
     super.key,
   });
 
   @override
+  QuizController controller = Get.put(QuizController());
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      padding: EdgeInsets.all(3),
+      margin: const EdgeInsets.symmetric(horizontal: 22),
+      padding: const EdgeInsets.all(15),
       height: 390,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: AppColors.white,
       ),
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            '??',
-            style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                  color: AppColors.txt_black,
-                  fontSize: 30,
-                ),
-          ),
-          const SizedBox(
-            height: 43,
-          ),
-          CustomElvatedBtn(
-            text: 'text',
-            onpressed: () {},
-            width: 310,
-            color: AppColors.cl,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          CustomElvatedBtn(
-            text: 'text',
-            onpressed: () {},
-            width: 310,
-            color: AppColors.cl,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          CustomElvatedBtn(
-            text: 'text',
-            onpressed: () {},
-            width: 310,
-            color: AppColors.cl,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          CustomElvatedBtn(
-            text: 'text',
-            onpressed: () {},
-            width: 310,
-            color: AppColors.cl,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-        ],
-      ),
+      child: GetBuilder<QuizController>(builder: (controller) {
+        return Column(
+          children: [
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              controller.quiz[controller.ind].question,
+              style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                    color: AppColors.txt_black,
+                    fontSize: 28,
+                  ),
+            ),
+            Expanded(
+              child: ListView.separated(
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return CustomElvatedBtn(
+                    text: controller.quiz[controller.ind].answers[index],
+                    onpressed: () {
+                      controller.changeIndex();
+                    },
+                    color: AppColors.cl,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 15,
+                  );
+                },
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 }
