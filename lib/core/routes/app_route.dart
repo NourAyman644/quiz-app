@@ -16,6 +16,7 @@ class Routes {
 }
 
 class AppRoutes {
+  static int result = 0;
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initilRoute:
@@ -27,7 +28,10 @@ class AppRoutes {
       case Routes.quiz:
         return MaterialPageRoute(builder: (_) => QuizScreen());
       case Routes.result:
-        return MaterialPageRoute(builder: (_) => Results());
+        return MaterialPageRoute(
+            builder: (_) => Results(
+                  result: result,
+                ));
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(

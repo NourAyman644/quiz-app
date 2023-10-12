@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz_app/core/utils/AppAssets.dart';
@@ -13,9 +14,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  AudioPlayer audioPlayer = AudioPlayer();
   initState() {
     super.initState();
+    audioPlayer.play(
+      AssetSource('sounds/warp-speed-6255.wav'),
+      position: Duration(seconds: 9),
+    );
     navigateAfter(seconds: 8, context: context, routeName: Routes.login);
+  }
+
+  void dispose() {
+    audioPlayer.stop();
+    super.dispose();
   }
 
   @override

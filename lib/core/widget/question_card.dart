@@ -44,9 +44,13 @@ class QuestionCard extends StatelessWidget {
                   return CustomElvatedBtn(
                     text: controller.quiz[controller.ind].answers[index],
                     onpressed: () {
-                      controller.changeIndex();
+                      controller.changeIndex(index);
                     },
-                    color: AppColors.cl,
+                    color: controller.Color == true &&
+                            controller.quiz[controller.ind].answers[index] ==
+                                controller.quiz[controller.ind].correct
+                        ? AppColors.green
+                        : AppColors.cl,
                   );
                 },
                 separatorBuilder: (context, index) {

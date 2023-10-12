@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -10,11 +11,31 @@ import '../../../core/utils/AppColors.dart';
 import '../../../core/utils/AppStrings.dart';
 import '../Controller/quiz_controller.dart';
 
-class QuizScreen extends StatelessWidget {
+class QuizScreen extends StatefulWidget {
   QuizScreen({Key? key}) : super(key: key);
 
   @override
+  State<QuizScreen> createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
+  @override
+  AudioPlayer audioPlayer = AudioPlayer();
+  void initState() {
+    // TODO: implement initState
+
+    audioPlayer.play(AssetSource('sounds/tickingbuzzer-75859.wav'));
+    super.initState();
+  }
+
+  void dispose() {
+    audioPlayer.stop();
+    super.dispose();
+  }
+
+  @override
   QuizController controller = Get.put(QuizController());
+
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
@@ -27,14 +48,14 @@ class QuizScreen extends StatelessWidget {
         Column(
           children: [
             const SizedBox(
-              height: 50,
+              height: 60,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 50,
-                  width: 200,
+                  height: 53,
+                  width: 220,
                   decoration: BoxDecoration(
                     color: AppColors.cl,
                     borderRadius: BorderRadius.circular(20),
@@ -53,7 +74,7 @@ class QuizScreen extends StatelessWidget {
                               ),
                         ),
                         Text(
-                          controller.ind.toString(),
+                          controller.quiz[controller.ind].id.toString(),
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
@@ -86,7 +107,7 @@ class QuizScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             Center(
               child: Lottie.asset(AppAssets.qa, height: 150, width: 150),

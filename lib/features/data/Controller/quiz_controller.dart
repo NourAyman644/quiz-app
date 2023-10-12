@@ -8,17 +8,49 @@ import '../view/results.dart';
 class QuizController extends GetxController {
   List<QuestionModel> quiz = question;
   int ind = 0;
-  void changeIndex() {
-    if (ind < quiz.length - 1) {
-      ind++;
-    } else {
-      Get.to(Results());
-    }
+  int result = 0;
+  bool Color = false;
+
+  void changeIndex(index) {
+    quiz[ind].answers[index] == quiz[ind].correct ? correct() : Wrong();
+
+    // if (ind < quiz.length - 1) {
+    //   ind++;
+    // } else {
+    //   Get.off(() => Results(
+    //         result: result,
+    //       ));
+    // }
     update();
   }
 
   void Reset() {
     ind = 0;
+    result = 0;
+    update();
+  }
+
+  void correct() async {
+    result += 10;
+    Color = true;
+
+    await Future.delayed(const Duration(milliseconds: 250));
+    update();
+    if (ind < quiz.length - 1) {
+      ind++;
+    } else {
+      Get.off(() => Results(result: result));
+    }
+    Color = false;
+    update();
+  }
+
+  void Wrong() {
+    if (ind < quiz.length - 1) {
+      ind++;
+    } else {
+      Get.off(() => Results(result: result));
+    }
     update();
   }
 }
@@ -54,15 +86,10 @@ List<QuestionModel> question = [
     answers: ['Venus', 'Earth', 'Mars', 'Jupiter'],
   ),
   QuestionModel(
+    correct: 'Pluto',
     id: 6,
-    correct: 'Sunlight hitting different parts of the Moon',
-    question: ' What causes the phases of the Moon?',
-    answers: [
-      'Shadows from Earth',
-      'Changes in Moon\'s color',
-      'Changes in Moon\'s size',
-      'Sunlight hitting different parts of the Moon',
-    ],
+    question: 'Which former planet was reclassified as a dwarf planet in 2006?',
+    answers: ['Mars', 'Venus', 'Pluto', 'Uranus'],
   ),
   QuestionModel(
     id: 7,
